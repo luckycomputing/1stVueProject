@@ -11,7 +11,7 @@
         id=""
         placeholder="Enter Email ID"
         class="p-2 m-2 w-72 border-b-2 border-b-indigo-500 shadow rounded focus:outline-indigo-400 focus:border-none"
-        v-model="email"
+        v-model="loginEmail"
       />
       <input
         type="password"
@@ -19,7 +19,7 @@
         id=""
         placeholder="Enter Password"
         class="p-2 m-2 w-72 border-b-2 border-b-indigo-500 mb-6 shadow rounded focus:outline-indigo-400 focus:border-none"
-        v-model="password"
+        v-model="loginPassword"
       />
       <button
         class="mx-auto block border-b-4 border-b-lime-500 p-2 w-40 shadow-lg bg-lime-200 hover:bg-lime-300 opacity-80 font-semibold rounded"
@@ -31,8 +31,8 @@
         class="mx-auto mt-4 p-2 font-semibold text-purple-900 bg-purple-300 rounded shadow-lg"
         to="sign-up"
         ><span class="font-bold underline">Not Registered,</span> Click to Sign
-        Up</router-link
-      >
+        Up
+      </router-link>
     </div>
   </div>
 </template>
@@ -44,14 +44,14 @@ export default {
   name: "log-in",
   data() {
     return {
-      email: "",
-      password: "",
+      loginEmail: "",
+      loginPassword: "",
     };
   },
   methods: {
     async logIn() {
       const result = await axios.get(
-        `http://localhost:3000/users?email=${this.email}&password=${this.password}`
+        `http://localhost:3000/users?email=${this.loginEmail}&password=${this.loginPassword}`
       );
       console.log(result);
       if (result.status === 200 && result.data.length > 0) {
